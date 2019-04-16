@@ -1,0 +1,17 @@
+{
+  "name": "backnice",
+  "version": "1.0.0",
+  "devDependencies": {
+    "browser-sync": "2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "6.0.0",
+    "gulp-clean-css": "4.0.0",
+    "gulp-plumber": "1.2.1",
+    "gulp-rename": "1.4.0",
+    "gulp-rimraf": "^0.2.2",
+    "gulp-sass": "4.0.2",
+    "gulp-uglify": "3.0.2",
+    "material-kit": "^2.0.4",
+    "sass": "1.18.0"
+  }
+}

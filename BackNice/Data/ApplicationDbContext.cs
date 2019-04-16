@@ -12,5 +12,6 @@ namespace BackNice.Data
             : base(options)
         {
         }
+        public DbSet<Models.SupplierModel> Suppliers { get; set; }
     }
 }

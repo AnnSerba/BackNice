@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+@{ 
+    var path = Url.ActionContext.HttpContext.Request.Path.Value;
+}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,63 +9,107 @@
     <title>@ViewData["Title"] - BackNice</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/material-kit/css/material-kit.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+        <link rel="stylesheet" href="~/lib/material-kit/css/material-kit.min.css"
+              asp-fallback-href="~/lib/material-kit/css/material-kit.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg bg-info">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BackNice</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BackNice</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item @(path == "/"?"active":"") ">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                            Home
+                            @if (path == "/")
+                            {
+                                <span class='sr-only'></span>
+                            }
+                        </a>
+                    </li>
+                    <li class="nav-item @(path.Contains("/Home/About")?"active":"") ">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">
+                            About
+                            @if (path.Contains("/Home/About"))
+                            {
+                                <span class='sr-only'></span>
+                            }
+                        </a>
+                    </li>
+                    <li class="nav-item  @(path.Contains("/Home/Contact")?"active":"") ">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">
+                            Contact
+                            @if (path.Contains("/Home/Contact"))
+                            {
+                                <span class='sr-only'></span>
+                            }
+                        </a>
+                    </li>
+                    <li class="nav-item  @(path.Contains("/Home/Suppliers")?"active":"") ">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Suppliers">
+                            Supplires
+                            @if (path.Contains("/Home/Suppliers"))
+                            {
+                                <span class='sr-only'></span>
+                            }
+                        </a>
+                    </li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
 
-    <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - BackNice</p>
-        </footer>
+        <partial name="_CookieConsentPartial" />
+        <div class="row">
+            <div class="card">
+                <div class="col-xl-12">
+                    <h2 class="card-header card-header-info">
+                        @ViewData["Title"]
+                    </h2>
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
     </div>
-
+   
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/material-kit/js/jquery.min.js"></script>
+        <script src="~/lib/material-kit/js/popper.min.js"></script>
+        <script src="~/lib/material-kit/js/bootstrap-material-design.min.js"></script>
+        <script src="~/lib/material-kit/js/material-kit.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        <script src="~/lib/material-kit/js/jquery.min.js"
+                asp-fallback-src="~/lib/material-kit/js/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
                 integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+        <script src="~/lib/material-kit/js/bootstrap-material-design.min.js"
+                asp-fallback-src="~/lib/material-kit/js/bootstrap-material-design.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/lib/material-kit/js/material-kit.min.js"
+                asp-fallback-src="~/lib/material-kit/js/material-kit.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">

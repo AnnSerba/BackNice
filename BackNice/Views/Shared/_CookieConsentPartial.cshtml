@@ -7,29 +7,19 @@
 }
 
 @if (showBanner)
-{
-    <nav id="cookieConsent" class="navbar navbar-default navbar-fixed-top" role="alert">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#cookieConsent .navbar-collapse">
-                    <span class="sr-only">Toggle cookie consent banner</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <span class="navbar-brand"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></span>
+{<div class="row">
+    <div class="col-xl-8 offset-sm-2">
+        <div id="cookieConsent" class="card" role="alert">
+            <div class="col-xl-12">
+                <h4 class="card-title">Use this space to summarize your privacy and cookie use policy.</h4>
             </div>
-            <div class="collapse navbar-collapse">
-                <p class="navbar-text">
-                    Use this space to summarize your privacy and cookie use policy.
-                </p>
-                <div class="navbar-right">
-                    <a asp-controller="Home" asp-action="Privacy" class="btn btn-info navbar-btn">Learn More</a>
-                    <button type="button" class="btn btn-default navbar-btn" data-cookie-string="@cookieString">Accept</button>
-                </div>
+            <div class="card-footer m-auto">
+                <a asp-controller="Home" asp-action="Privacy" class="btn btn-info">Learn More</a>
+                <button type="button" class="btn btn-success" data-cookie-string="@cookieString">Accept</button>
             </div>
         </div>
-    </nav>
+    </div>
+</div>
     <script>
         (function () {
             document.querySelector("#cookieConsent button[data-cookie-string]").addEventListener("click", function (el) {

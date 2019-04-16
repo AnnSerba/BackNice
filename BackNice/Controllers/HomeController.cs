@@ -28,7 +28,10 @@ namespace BackNice.Controllers
 
             return View();
         }
-
+        public IActionResult Suppliers()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
